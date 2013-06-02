@@ -48,5 +48,7 @@ Settings > Hide My Site > Duration
 = 1.0 =
 * Initial version
 
+== Upgrade Notice ==
+
 = 1.1 =
 This version enables XML-RPC access while plugin is activated
