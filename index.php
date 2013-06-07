@@ -52,7 +52,7 @@ class hide_my_site{
     		setcookie($this->get_cookie_name(), 1, time()+$this->get_cookie_duration());
 			$cookie_just_set = 1;
 		}
-		if( ($_COOKIE[$this->get_cookie_name()] != 1) AND ($cookie_just_set != 1) ) {
+		if( (empty($_COOKIE[$this->get_cookie_name()])) AND (empty($cookie_just_set)) ) {
 				// This is the login page for the public
 				echo "
 					<style>
@@ -223,10 +223,10 @@ class hide_my_site{
 	 * 
 	 */
 	function create_a_checkbox($args) {
-		$html = '<input type="checkbox" id="'  . $args[id] . '" name="'  . $args[id] . '" value="1" ' . checked(1, get_option($args[id], $args["default"]), false) . '/>'; 
+		$html = '<input type="checkbox" id="'  . $args["id"] . '" name="'  . $args["id"] . '" value="1" ' . checked(1, get_option($args["id"], $args["default"]), false) . '/>'; 
 		
 		// Here, we will take the desc argument of the array and add it to a label next to the checkbox
-		$html .= '<label for="'  . $args[id] . '"> '  . $args[desc] . '</label>'; 
+		$html .= '<label for="'  . $args["id"] . '"> '  . $args["desc"] . '</label>'; 
 		
 		echo $html;
 		
@@ -234,39 +234,60 @@ class hide_my_site{
 	
 	function create_a_text_input($args) {
 		//grab placeholder if there is one
-		if($args[placeholder]) {
-			$placeholder_html = "placeholder=\"".$args[placeholder]."\"";
-		}		
+		if(isset($args["placeholder"])) {
+			$placeholder_html = "placeholder=\"".$args["placeholder"]."\"";
+		}	else {
+			$placeholder_html = "";
+		}
+		if(isset($args["default"])) {
+			$default = $args["default"];
+		} else {
+			$default = false;
+		}
 		// Render the output
-		echo '<input type="text" '  . $placeholder_html . ' id="'  . $args[id] . '" name="'  . $args[id] . '" value="' . get_option($args[id], $args["default"]) . '" />';
-		if($args[desc]) {
-			echo "<p class='description'>".$args[desc]."</p>";
+		echo '<input type="text" '  . $placeholder_html . ' id="'  . $args["id"] . '" name="'  . $args["id"] . '" value="' . get_option($args["id"], $default) . '" />';
+		if($args["desc"]) {
+			echo "<p class='description'>".$args["desc"]."</p>";
 		}
 		
 	} // end create_a_text_input
 	
 	function create_a_textarea_input($args) {
 		//grab placeholder if there is one
-		if($args[placeholder]) {
-			$placeholder_html = "placeholder=\"".$args[placeholder]."\"";
-		}	
+		if($args["placeholder"]) {
+			$placeholder_html = "placeholder=\"".$args["placeholder"]."\"";
+		}	else {
+			$placeholder_html = "";
+		}
+		//get default value if there is one
+		if(isset($args["default"])) {
+			$default = $args["default"];
+		} else {
+			$default = false;
+		}
 		// Render the output
-		echo '<textarea '  . $placeholder_html . ' id="'  . $args[id] . '"  name="'  . $args[id] . '" rows="5" cols="50">' . get_option($args[id], $args["default"]) . '</textarea>';
-		if($args[desc]) {
-			echo "<p class='description'>".$args[desc]."</p>";
+		echo '<textarea '  . $placeholder_html . ' id="'  . $args["id"] . '"  name="'  . $args["id"] . '" rows="5" cols="50">' . get_option($args["id"], $default) . '</textarea>';
+		if($args["desc"]) {
+			echo "<p class='description'>".$args["desc"]."</p>";
 		}		
 	}
 	
 	function create_a_radio_input($args) {
 	
-		$radio_options = $args[radio_options];
+		$radio_options = $args["radio_options"];
 		$html = "";
-		if($args[desc]) {
-			$html .= $args[desc] . "<br>";
+		if($args["desc"]) {
+			$html .= $args["desc"] . "<br>";
+		}
+		//get default value if there is one
+		if(isset($args["default"])) {
+			$default = $args["default"];
+		} else {
+			$default = false;
 		}
 		foreach($radio_options as $radio_option) {
-			$html .= '<input type="radio" id="'  . $args[id] . '_' . $radio_option[value] . '" name="'  . $args[id] . '" value="'.$radio_option[value].'" ' . checked($radio_option[value], get_option($args[id], $args["default"]), false) . '/>';
-			$html .= '<label for="'  . $args[id] . '_' . $radio_option[value] . '"> '.$radio_option[label].'</label><br>';
+			$html .= '<input type="radio" id="'  . $args["id"] . '_' . $radio_option["value"] . '" name="'  . $args["id"] . '" value="'.$radio_option["value"].'" ' . checked($radio_option["value"], get_option($args['id'], $default), false) . '/>';
+			$html .= '<label for="'  . $args["id"] . '_' . $radio_option["value"] . '"> '.$radio_option["label"].'</label><br>';
 		}
 		
 		echo $html;
@@ -275,14 +296,20 @@ class hide_my_site{
 
 	function create_a_select_input($args) {
 	
-		$select_options = $args[select_options];
+		$select_options = $args["select_options"];
 		$html = "";
-		if($args[desc]) {
-			$html .= $args[desc] . "<br>";
+		if($args["desc"]) {
+			$html .= $args["desc"] . "<br>";
 		}
-		$html .= '<select id="'  . $args[id] . '" name="'  . $args[id] . '">';
+		//get default value if there is one
+		if(isset($args["default"])) {
+			$default = $args["default"];
+		} else {
+			$default = false;
+		}
+		$html .= '<select id="'  . $args["id"] . '" name="'  . $args["id"] . '">';
 			foreach($select_options as $select_option) {
-				$html .= '<option value="'.$select_option[value].'" ' . selected( $select_option[value], get_option($args[id], $args["default"]), false) . '>'.$select_option[label].'</option>';
+				$html .= '<option value="'.$select_option["value"].'" ' . selected( $select_option["value"], get_option($args["id"], $default), false) . '>'.$select_option["label"].'</option>';
 			}
 		$html .= '</select>';
 		
