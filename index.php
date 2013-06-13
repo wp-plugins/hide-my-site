@@ -24,7 +24,7 @@ class hide_my_site{
 		$this->plugin_label = $plugin_label;
 		global $pagenow; 	
 		if( (!is_admin()) AND ($pagenow!='xmlrpc.php') AND ($pagenow!='wp-login.php') AND (get_option($this->plugin_slug.'_enabled', 1) == 1) AND (get_option($this->plugin_slug.'_password')) ) { //public site and plugin enabled with password set
-			add_action('plugins_loaded', array($this, 'verify_login')); //hooks into plugins_loaded. one of the earliest functions in wordpress
+			add_action('wp', array($this, 'rss_check')); //hooks into plugins_loaded. one of the earliest functions in wordpress
 		}
 		
         if(is_admin()){
@@ -38,6 +38,18 @@ class hide_my_site{
 		}
 		
     }
+	public function rss_check() {
+		if(!$this->allow_because_rss()) {
+			$this->verify_login();
+		}
+	}
+	public function allow_because_rss() {
+		if( (get_option($this->plugin_slug.'_public_rss', 0) == 1) and (is_feed()) ) {
+			return true;
+		} else {
+			return false;	
+		}
+	}
 	public function get_cookie_name(){
 		$name = $this->plugin_slug . "-access";
 		return $name ;
@@ -211,6 +223,25 @@ class hide_my_site{
 				"default" => '1' //sets the default field value (optional), when grabbing this option value later on remember to use get_option(option_name, default_value) so it will return default value if no value exists yet
 			)			
 		);
+		
+		//add checkbox field
+		$field_slug = "public_rss";
+		$field_label = "Public RSS?";
+		$field_id = $this->plugin_slug.'_'.$field_slug;
+		register_setting($this->plugin_slug.'_option_group', $field_id);
+		add_settings_field(
+		    $field_id,
+		    $field_label, 
+		    array($this, 'create_a_checkbox'), //callback function for checkbox
+		    $this->plugin_slug.'-setting-admin',
+		    $this->plugin_slug.'_setting_section',
+		    array(								// The array of arguments to pass to the callback.
+				"id" => $field_id, //sends field id to callback
+				"desc" => 'Check this box make your rss feeds public even while your site is hidden', //description of the field (optional)
+				"default" => '0' //sets the default field value (optional), when grabbing this option value later on remember to use get_option(option_name, default_value) so it will return default value if no value exists yet
+				
+			)			
+		);
 	
 	//add radio option
 	//$option_id = "status";
@@ -367,4 +398,4 @@ class hide_my_site{
 		
 } //end plugin class
 
-$custom_plugin = new $plugin_slug();	
+$custom_plugin = new $plugin_slug();
