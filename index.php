@@ -237,7 +237,7 @@ class hide_my_site{
 		    $this->plugin_slug.'_setting_section',
 		    array(								// The array of arguments to pass to the callback.
 				"id" => $field_id, //sends field id to callback
-				"desc" => 'Check this box make your rss feeds public even while your site is hidden', //description of the field (optional)
+				"desc" => 'Check this box to make your rss feeds public even while your site is hidden', //description of the field (optional)
 				"default" => '0' //sets the default field value (optional), when grabbing this option value later on remember to use get_option(option_name, default_value) so it will return default value if no value exists yet
 				
 			)			
