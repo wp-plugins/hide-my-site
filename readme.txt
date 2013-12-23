@@ -21,15 +21,17 @@ You can choose how many days you want the user to stay logged in by going to <st
 = New in Version 1.2 =
 
 **Free Users**
-
-*  Set a password hint
+<ul>
+<li>Set a password hint</li>
+</ul>
 
 **Premium Users**
-
-*  Choose from 5 sleek new login-page designs
-*  Set a custom background image
-*  Apply custom CSS to your login page
-*  Add a template within your theme's directory to create your own custom login pages
+<ul>
+<li>Choose from 5 sleek new login-page designs</li>
+<li>Set a custom background image</li>
+<li>Apply custom CSS to your login page</li>
+<li>Add a template within your theme's directory to create your own custom login pages</li>
+</ul>
 
 == Installation ==
 
