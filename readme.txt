@@ -26,7 +26,7 @@ You can choose how many days you want the user to stay logged in by going to <st
 
 **Premium Users**
 
-*  Choose from 5 sleek new login-page designs
+*  Choose from five sleek new login-page designs
 *  Set a custom background image
 *  Apply custom CSS to your login page
 *  Add a template within your theme's directory to create your own custom login pages.
