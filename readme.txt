@@ -18,14 +18,14 @@ Choose a single password to protect your entire wordpress site. Only visitors wh
 
 You can choose how many days you want the user to stay logged in by going to <strong>Settings > Hide My Site > Duration</strong>.
 
-= New in Version 1.2 =
+<h3>New in Version 1.2</h3>
 
-**Free Users**
+<h2>Free Users</h2>
 <ul>
 <li>Set a password hint</li>
 </ul>
 
-**Premium Users**
+<h2>Premium Users</h2>
 <ul>
 <li>Choose from 5 sleek new login-page designs</li>
 <li>Set a custom background image</li>
