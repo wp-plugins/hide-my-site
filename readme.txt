@@ -20,12 +20,12 @@ You can choose how many days you want the user to stay logged in by going to <st
 
 <h3>New in Version 1.2</h3>
 
-<h2>Free Users</h2>
+<h4>Free Users</h4>
 <ul>
 <li>Set a password hint</li>
 </ul>
 
-<h2>Premium Users</h2>
+<h4>Premium Users</h4>
 <ul>
 <li>Choose from 5 sleek new login-page designs</li>
 <li>Set a custom background image</li>
