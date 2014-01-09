@@ -8,7 +8,7 @@
 							text-align: center;
 							height: 100%;
 						}
-						body { background: url(<?php echo $this->plugin_dir ?>/images/bg_dot.png) rgba(111, 122, 151, 0.28); font-family:Arial;}
+						body { background: url(<?php echo $this->plugin_dir ?>/images/bg_dot.png) #d6d9e2; font-family:Arial;}
 						#form_wrap { background: url(<?php echo $this->plugin_dir ?>/images/login_bg.png) no-repeat;display: block;margin: 0px auto;height: 450px;width: 403px; position: relative;top: 50%;margin-top: -225px; }
 						#form_wrap input[type=text], .enter_password {background: url(<?php echo $this->plugin_dir ?>/images/input_back.png) no-repeat; position: absolute;top: 159px;left: 50px;
 							border: 0px;
