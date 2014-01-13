@@ -165,7 +165,8 @@ class hide_my_site{
                 <div class="motech_premium_box">
                 	<div class="motech_premium_box_wrap">
                         <h2>Get Premium</h2>
-                        <div class="updated below-h2"><p><strong>Purchase will be processed via PayPal.</strong></p></div>
+                        <div class="updated below-h2" style="margin-bottom: -20px !important;"><p><strong>Purchase will be processed via PayPal.</strong></p></div>
+                        <div class="updated below-h2"><p><strong>Every license is valid for the lifetime of the website where it's installed.</strong></p></div>
                         
                         <div class="motech_purchase_buttons">
                         
@@ -175,7 +176,7 @@ class hide_my_site{
                                         <div class="purchase_graphic">Buy 1 Use</div>
                                         <div class="purchase_bubble">
                                             <div class="purchase_price">$10</div>
-                                            <div class="purchase_meta">1 use license</div>
+                                            <div class="purchase_meta">1 site license</div>
                                         </div>
                                     </button>
                                     <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" alt="" border="0" height="1" width="1">
@@ -188,7 +189,7 @@ class hide_my_site{
                                         <div class="purchase_graphic">Buy 3 Uses</div>
                                         <div class="purchase_bubble">
                                             <div class="purchase_price">$25</div>
-                                            <div class="purchase_meta">3 use license</div>
+                                            <div class="purchase_meta">3 site license</div>
                                         </div>
                                     </button>
                                     <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" alt="" border="0" height="1" width="1">
@@ -201,7 +202,7 @@ class hide_my_site{
                                         <div class="purchase_graphic">Buy <span>Unlimited</span></div>
                                         <div class="purchase_bubble">
                                             <div class="purchase_price">$50</div>
-                                            <div class="purchase_meta">Unlimited uses for 1 year</div>
+                                            <div class="purchase_meta">Unlimited sites for 1 year</div>
                                         </div>
                                     </button>
                                     <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" alt="" border="0" height="1" width="1">
