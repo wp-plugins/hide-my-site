@@ -123,7 +123,7 @@ class hide_my_site{
 				}
 				
 				
-				echo "<style>";//Begin login page CSS which can be customized via plugin setting page
+				echo "<!DOCTYPE html><html><style>";//Begin HTML and login page CSS which can be customized via plugin setting page
 				?>
                 body {margin:0px;}
                 #custom_messaging_banner {background: #eb583c;padding: 7px 10px;color: white;border-bottom: solid 3px white;font-size:16px;position:relative;z-index:1;}
@@ -166,6 +166,7 @@ class hide_my_site{
 				} else { //not overriden, use plugin template
 					include ('templates/'.$template_slug.'.php');
 				}
+				echo "</html>"; //end html
 				exit;
 		}
     }
