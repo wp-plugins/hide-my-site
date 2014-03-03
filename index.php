@@ -126,7 +126,7 @@ class hide_my_site{
 				echo "<style>";//Begin login page CSS which can be customized via plugin setting page
 				?>
                 body {margin:0px;}
-                #custom_messaging_banner {background: #eb583c;padding: 7px 10px;color: white;border-bottom: solid 3px white;font-size:16px;}
+                #custom_messaging_banner {background: #eb583c;padding: 7px 10px;color: white;border-bottom: solid 3px white;font-size:16px;position:relative;z-index:1;}
                 <?php
 				//use custom background image if there is one
 				if(get_option($this->plugin_slug.'_custom_background_image_upload')) { ?>
