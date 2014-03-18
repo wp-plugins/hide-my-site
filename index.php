@@ -134,7 +134,7 @@ class hide_my_site{
 					<?php
 				}
 				//use custom background image position if it's set
-				if(get_option($this->plugin_slug.'_custom_background_image_position', 'none') != 'none') { ?>
+				if(get_option($this->plugin_slug.'_custom_background_image_position', '') != '') { ?>
 					<?php if ( get_option($this->plugin_slug.'_custom_background_image_position') == 'croptofit' ) : ?>
 						body {background-size: cover !important;background-position: center !important;}
 					<?php elseif ( get_option($this->plugin_slug.'_custom_background_image_position') == 'repeat' ) : ?>
@@ -417,7 +417,7 @@ class hide_my_site{
 		$field_slug = "custom_messaging_banner_override";
 		$field_label = "Custom Notification Message" . $this->get_premium_warning();
 		$field_id = $this->plugin_slug.'_'.$field_slug;
-		register_setting($this->plugin_slug.'_option_group', $field_id, array($this, 'po_theme'));
+		register_setting($this->plugin_slug.'_option_group', $field_id, array($this, 'po'));
 		add_settings_field(	
 			$field_id,						
 			$field_label,							
@@ -505,13 +505,13 @@ class hide_my_site{
 		$field_label = "Background Image Position (Optional)" . $this->get_premium_warning();
 		$field_id = $this->plugin_slug.'_'.$field_slug;
 		$this->back_options = array(
-								array("label" => "Select...", "value" => "none"),
+								array("label" => "Select...", "value" => ""),
 								array("label" => "Repeat", "value" => "repeat"),
 								array("label" => "Crop to Fit", "value" => "croptofit"),
 								array("label" => "Stretch", "value" => "stretch"),
 								array("label" => "Proportional Stretch", "value" => "propstretch"),
 		);
-		register_setting($this->plugin_slug.'_option_group', $field_id, array($this, 'po_theme'));
+		register_setting($this->plugin_slug.'_option_group', $field_id, array($this, 'po'));
 		add_settings_field(	
 			$field_id,						
 			$field_label,							
@@ -520,7 +520,7 @@ class hide_my_site{
 		    $this->plugin_slug.'_setting_section_displayoptions',
 		    array(								// The array of arguments to pass to the callback.
 				"id" => $field_id, //sends select field id to callback
-				"default" => 'none', //sets the default field value (optional), when grabbing this field value later on remember to use get_option(option_name, default_value) so it will return default value if no value exists yet
+				"default" => '', //sets the default field value (optional), when grabbing this field value later on remember to use get_option(option_name, default_value) so it will return default value if no value exists yet
 				"desc" => 'Adjust how your custom background image is positioned and resized. If left empty, default settings will be used', //description of the field (optional)
 				"select_options" => $this->back_options //sets select option data
 			)				
@@ -530,7 +530,7 @@ class hide_my_site{
 		$field_slug = "background_color";
 		$field_label = "Background Color (Optional)" . $this->get_premium_warning();
 		$field_id = $this->plugin_slug.'_'.$field_slug;
-		register_setting($this->plugin_slug.'_option_group', $field_id, array($this, 'po_theme'));
+		register_setting($this->plugin_slug.'_option_group', $field_id, array($this, 'po'));
 		add_settings_field(
 		    $field_id,
 		    $field_label, 
@@ -857,6 +857,7 @@ class hide_my_site{
 			echo "<p class='description'>".$args["desc"]."</p>";
 		}
 		
+
 	} // end create_a_text_input
 	
 	function create_a_textarea_input($args) {
