@@ -304,6 +304,7 @@ class hide_my_site{
 		} else {
 			$enterprompt = "Enter your license key to unlock premium features. <a href='javascript:void(0)' class='hms_get_premium'>Get Premium »</a>";
 		}
+		$enterprompt .= "<br><a href='javascript:void(0)' class='how_to_redeem'>How To Redeem Your License Key</a><div class='redeem_info'><ol><li>Download the <a href='http://www.justinsaad.com/pau/expansion-hide-my-site/expansion-hide-my-site.zip'>Hide My Site Premium Expansion plugin file</a> in zip format</li><li>Upload the zip file via WordPress plugin uploader (in your <strong>WordPress admin > Plugins > Add New > Upload</strong>) and activate it</li><li>Enter your license key in your <strong>WordPress admin > Settings > Hide My Site Premium Expansion > Premium License Key</strong></li></ol></div>";
 		if (get_option($this->plugin_slug . '_ihmsa','') == 'hmsia') {
 			$desc = "<div class='mvalid'>Valid</div>";
 		} else {
@@ -643,6 +644,7 @@ class hide_my_site{
 				.motech_premium_box .updated {margin-bottom: 20px !important;margin-top: 29px !important;}
 				.motech_premium_box button {background: none;border: none; position:relative;cursor: pointer;overflow: visible;}
 				.motech_purchase_button .purchase_graphic {background:url(<?php echo $this->plugin_dir ?>/images/buy_sprite.png) no-repeat;height: 100px;width: 101px;background-position: -17px -24px;color: white;font-size: 22px;padding: 20px 42px;padding-top: 57px;text-shadow: 1px 1px 7px black;position: absolute;top: -80px;left: -80px;line-height:normal;font-family: 'Open Sans', sans-serif;}
+				.redeem_info{margin-top:20px;display:none;}
 				.motech_purchase_button.unlimited_use .purchase_graphic {width: 115px;padding: 21px 36px;padding-top: 57px;}
 				.motech_purchase_button.unlimited_use .purchase_graphic span {font-weight:bold;}
 				.motech_purchase_button .purchase_bubble {background: white;border-radius: 9px;width: 350px;height: 123px;margin-bottom: 5px;-webkit-transition: all .2s ease-out;  -moz-transition: all .2s ease-out;-o-transition: all .2s ease-out;transition: all .2s ease-out;}
@@ -752,6 +754,9 @@ class hide_my_site{
 						
 						jQuery("#hms_get_premium, .motech_premium_cancel span").click(function(){
 							jQuery(".motech_premium_box").slideToggle(200);
+						});
+						jQuery(".how_to_redeem").click(function(){
+							jQuery(".redeem_info").slideToggle(200);
 						});
 						jQuery(".hms_get_premium").click(function(){
 							jQuery("html, body").animate({ scrollTop: 0 }, 300, function() {
@@ -955,6 +960,7 @@ class hide_my_site{
 	
 	
 		
+
 } //end plugin class
 
 //load the plugin
