@@ -270,7 +270,7 @@ class hide_my_site{
             </div>
             <div class="mt_donate_wrap">
             	<?php if (get_option($this->plugin_slug . '_ihmsa','') != 'hmsia') : ?>
-                <?php $this->get_donate_button() ?>
+                <?php /*?><?php $this->get_donate_button() ?><?php */?>
                 <?php endif ?>
             </div>
 		    <form method="post" action="options.php" class="<?php echo $this->plugin_slug ?>_form">
