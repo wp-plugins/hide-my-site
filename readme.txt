@@ -4,7 +4,7 @@ Donate link: http://www.clevelandwebdeveloper.com/wordpress-plugins/donate.php
 Tags: password, password protection, password protect, hide, hide site, hide from search engines, hide from google
 Requires at least: 2.9
 Tested up to: 3.9.1
-Stable tag: 1.4
+Stable tag: 1.4.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
