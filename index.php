@@ -585,6 +585,7 @@ class hide_my_site{
 								array("label" => "Lock and Key", "value" => "hmslockandkey"),
 								array("label" => "Binder", "value" => "hmsbinder"),
 								array("label" => "Iris", "value" => "hmsiris"),
+								array("label" => "Discreet", "value" => "hmsdiscreet"),
 								array("label" => "Classic", "value" => "hmsclassic"),
 		);
 		register_setting($this->plugin_slug.'_option_group', $field_id, array($this, 'po_theme'));
@@ -719,7 +720,8 @@ class hide_my_site{
 	//the image picker code
     public function get_image_picker(){ 
 		?>
-        	<strong style="display: block; font-size: 18px;margin-bottom:15px;">Select a theme for your login page<?php echo $this->get_premium_warning() ?></strong>
+        	<strong style="display: block; font-size: 18px;margin-bottom:3px;">Select a theme for your login page<?php echo $this->get_premium_warning() ?></strong>
+            <div style="font-style:italic;margin-bottom:15px;">If you want a theme that doesn't block the background image, choose 'Discreet'</div>
             <div class="motech_image_picker" selectid="<?php echo $this->plugin_slug ?>_current_theme"><?php /*?>put id of select field here<?php */?>
             <?php $options = $this->current_theme_options ?>
             <?php foreach ($options as $option) : ?>
