@@ -1,5 +1,5 @@
 <?php
-//to override this template, create a file named hmsbinder.php within your active theme folder. you should probably copy and paste this file's code as a starting point.
+//to override this template, create a file named hmsdiscreet.php within your active theme folder. you should probably copy and paste this file's code as a starting point.
 ?>
 
 					<style>
