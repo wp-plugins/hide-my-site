@@ -841,7 +841,9 @@ class hide_my_site{
 			?>
 				<script>
 					jQuery(function() {
-						
+
+						//jquery for color picker
+						jQuery('tr.motech-color-field').removeClass('motech-color-field');
 						
 						//jquery for image picker
 						jQuery(".motech_image_picker_wrap").click(function(){
