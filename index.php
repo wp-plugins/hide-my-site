@@ -95,7 +95,12 @@ class hide_my_site{
 		return $name;
 	}
 	public function get_cookie_duration(){
-		return get_option($this->plugin_slug.'_duration', 1)*(86400);
+		$duration_setting = get_option($this->plugin_slug.'_duration', 1);
+		if($duration_setting > 0){
+			return time()+(($duration_setting)*(86400));
+		} else{
+			return 0;	
+		}
 	}
 	public function no_admin_bypass() {
 		if ( (get_option($this->plugin_slug.'_allow_admin', 0) == 1) AND (current_user_can( 'manage_options' )) ){	//site owner has chosen for admins to bypass login page, and user is an admin
@@ -135,7 +140,7 @@ class hide_my_site{
 				
 		//set access cookie if password is correct
 	 	if ((isset($_POST['hwsp_motech']) AND ($this->security->needs_to_wait != 1) AND ($_POST['hwsp_motech'] != "")) AND ($_POST['hwsp_motech'] == get_option($this->plugin_slug.'_password'))) {
-    		setcookie($this->get_cookie2_name(), 1, time()+$this->get_cookie_duration(), '/');
+    		setcookie($this->get_cookie2_name(), 1, $this->get_cookie_duration(), '/');
 			$cookie_just_set = 1;
 			$this->security->remove_ip();
 		}
@@ -425,7 +430,7 @@ class hide_my_site{
 		    $this->plugin_slug.'_setting_section',
 		    array(								// The array of arguments to pass to the callback.
 				"id" => $field_id, //sends field id to callback
-				"desc" => 'For how many days do you want the user to stay logged in?', //description of the field (optional)
+				"desc" => 'For how many days do you want the user to stay logged in? If set to 0, the user will be logged out when the browser closes.', //description of the field (optional)
 				"default" => '1' //sets the default field value (optional), when grabbing this option value later on remember to use get_option(option_name, default_value) so it will return default value if no value exists yet
 			)			
 		);
